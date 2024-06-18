@@ -15,7 +15,6 @@ public class BackendW5D2Application {
 
 
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(BackendW5D2Application.class);
-
 		Menu menuPizzeria = context.getBean(Menu.class);
 		System.out.println("Menu pizzeria");
 		System.out.println("Pizzas");
