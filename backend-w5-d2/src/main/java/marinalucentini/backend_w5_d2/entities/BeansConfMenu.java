@@ -3,11 +3,13 @@ package marinalucentini.backend_w5_d2.entities;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.PropertySource;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
+@PropertySource("application.properties")
 public class BeansConfMenu {
     @Bean
     @Primary
@@ -96,6 +98,7 @@ public class BeansConfMenu {
     public Drink Wine(){
         return new Drink("Wine", 7.49,607,0.75 );
     }
+
 
 
 }
