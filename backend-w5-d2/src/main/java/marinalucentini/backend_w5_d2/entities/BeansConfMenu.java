@@ -119,14 +119,11 @@ public class BeansConfMenu {
     public Table table4 (){
         return new Table(4,4);
 }
-//@Bean
-//public Order orderdDefault(){
-//        return new Order(1, Arrays.asList(pizzaHawaiana(),getToppingHam(), Water()), OrderStatus.IN_PROGRESS, 2, LocalTime.of(20,30));
-//}
 
-//@Bean
-//    public double totalPrice(Order order, @Value("${coperto.costo}")String coperto){
-//        return order.total(Double.parseDouble(coperto));
-//}
+
+@Bean
+    public double coperto(@Value("${coperto.costo}")String coperto){
+        return Double.parseDouble(coperto);
+}
 
 }

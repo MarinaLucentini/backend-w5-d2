@@ -44,13 +44,12 @@ public class Runner implements CommandLineRunner {
 
 @Autowired
 Menu menuPizzeria;
-    @Value("${coperto.costo}")
-    private double copertoCosto;
+
     @Override
     public void run(String... args) throws Exception {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(BackendW5D2Application.class);
         Table table1 = context.getBean("table1", Table.class);
-
+double copertoCosto = context.getBean("coperto", double.class);
        Pizza pizza = context.getBean("pizzaMargherita", Pizza.class);
        Drink water = context.getBean("Water", Drink.class);
        Topping topping = context.getBean(Topping.class);
