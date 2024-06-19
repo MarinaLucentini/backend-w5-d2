@@ -1,15 +1,17 @@
 package marinalucentini.backend_w5_d2.entities;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.PropertySource;
+import marinalucentini.backend_w5_d2.enums.OrderStatus;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.*;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Configuration
 @PropertySource("application.properties")
+
 public class BeansConfMenu {
     @Bean
     @Primary
@@ -53,6 +55,7 @@ public class BeansConfMenu {
     }
     @Bean
     @Primary
+
     public Pizza pizzaMargherita (){
         return new Pizza("Pizza margherita", 4.99, 1104,toppingMargherita());
     }
@@ -99,6 +102,31 @@ public class BeansConfMenu {
         return new Drink("Wine", 7.49,607,0.75 );
     }
 
+@Bean
+@Primary
+    public Table table1 (){
+        return new Table(1,2);
+}
+@Bean
+    public Table table2 (){
+        return new Table(2,2);
+}
+@Bean
+    public Table table3 (){
+        return new Table(3,4);
+}
+@Bean
+    public Table table4 (){
+        return new Table(4,4);
+}
+//@Bean
+//public Order orderdDefault(){
+//        return new Order(1, Arrays.asList(pizzaHawaiana(),getToppingHam(), Water()), OrderStatus.IN_PROGRESS, 2, LocalTime.of(20,30));
+//}
 
+//@Bean
+//    public double totalPrice(Order order, @Value("${coperto.costo}")String coperto){
+//        return order.total(Double.parseDouble(coperto));
+//}
 
 }

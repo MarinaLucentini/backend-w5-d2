@@ -9,11 +9,10 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-
 public class Table {
     private int numberTable;
     private int maxPerson;
-    private TableStatus tableStatus;
+    private TableStatus tableStatus = TableStatus.FREE;
 private List<Order> orders;
 
     public Table(int numberTable, int maxPerson) {

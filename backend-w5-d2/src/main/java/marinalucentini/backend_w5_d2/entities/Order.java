@@ -1,10 +1,8 @@
 package marinalucentini.backend_w5_d2.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import marinalucentini.backend_w5_d2.enums.OrderStatus;
+import org.springframework.context.annotation.PropertySource;
 
 import java.time.LocalTime;
 import java.util.List;
@@ -13,6 +11,7 @@ import java.util.stream.Collectors;
 @Setter
 @Getter
 @ToString
+@PropertySource("application.properties")
 public class Order {
     private int numberOrder;
     private List<MenuElement> menuElements;
@@ -28,7 +27,7 @@ public class Order {
         this.numberCovered = numberCovered;
         this.hoursOfAcquisition = hoursOfAcquisition;
     }
-    public double total (){
-     return   this.total = this.menuElements.stream().mapToDouble(MenuElement::getPrice).sum() ;
-    }
+    public double total (double coperto){
+   return   this.total = this.menuElements.stream().mapToDouble(MenuElement::getPrice).sum() +  coperto;
+   }
 }
