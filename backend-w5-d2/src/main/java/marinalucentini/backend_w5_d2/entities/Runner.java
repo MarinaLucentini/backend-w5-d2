@@ -40,50 +40,6 @@ public class Runner implements CommandLineRunner {
                 el.getName() + "(" + el.getQuantity() + "L)" + " prezzo " + el.getPrice() + " calorie " + el.getCalories()
         ));
     }
-//    private void printListTable(){
-//        Table table1 = context.getBean("table1", Table.class);
-//        Table table2 = context.getBean("table2", Table.class);
-//        Table table3 = context.getBean("table3", Table.class);
-//        Table table4 = context.getBean("table4", Table.class);
-//        List<Table> listaTavoli = new ArrayList<>();
-//        listaTavoli.add(table1);
-//        listaTavoli.add(table2);
-//        listaTavoli.add(table3);
-//        listaTavoli.add(table4);
-//        System.out.println();
-//        listaTavoli.forEach(el->{
-//            String ordersElement =  el.getOrders().stream().map(elements-> {
-//                        String elementsInfo = elements.getMenuElements().stream().map(element -> {
-//                            if (element instanceof Pizza) {
-//                                Pizza pizza = (Pizza) element;
-//                                String ingredients = pizza.getIngredients().stream()
-//                                        .map(Topping::getName)
-//                                        .collect(Collectors.joining(", "));
-//                                return "Pizza: " + pizza.getName() + " (Ingredienti: " + ingredients + ")";
-//                            } else if (element instanceof Drink) {
-//                                Drink drink = (Drink) element;
-//                                return "Drink: " + drink.getName();
-//                            } else if (element instanceof Topping) {
-//                                Topping topping = (Topping) element;
-//                                return "Topping: " + topping.getName();
-//
-//
-//                            }
-//                            return element.getName();
-//
-//                        }).collect(Collectors.joining(", "));
-//                        return "Ordine" + elements.getNumberOrder() + ":" + elementsInfo;
-//                    }).collect(Collectors.joining(","));
-//
-//
-//
-//            System.out.println("Tavolo numero: " + el.getNumberTable() + " stato tavolo " + el.getTableStatus() + " Ordini: " + el.getOrders()
-//
-//
-//            );
-//        });
-//    }
-
 
 
 @Autowired
@@ -110,12 +66,25 @@ Menu menuPizzeria;
 
         table1.setOrders(Arrays.asList(order));
 
-        System.out.println(table1);
         double totalPrice = order.total(copertoCosto);
         System.out.println("Total Price: " + totalPrice);
 
-      printMenu();
-//printListTable();
+
+
+        System.out.println("Tavolo n: " + table1.getNumberTable() + " State: " + table1.getTableStatus() + " Numero Massimo persone: " + table1.getMaxPerson() + " Ordini: " );
+
+        table1.getOrders().forEach(el->{
+            String elementOrderName=
+                    el.getMenuElements().stream().map(MenuElement::getName).collect(Collectors.joining(","));
+            String elementOrderPrice =
+                    el.getMenuElements().stream().map(menuElement->
+                            String.valueOf(menuElement.getPrice())).collect(Collectors.joining(","));
+            System.out.println(elementOrderName +" "+ elementOrderPrice+ " Totale: " + el.total(copertoCosto));
+        });
+
+
+        printMenu();
+
     }
 
 
